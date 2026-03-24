@@ -1,12 +1,11 @@
 import streamlit as st
-from anthropic import Anthropic
-from Agent.Setup import initialize_kernel
+from Agent.Setup import initialize_kernel, create_client
 
 st.set_page_config(page_title="Document Index Agent", layout="centered")
 st.title("Document Index Agent")
 
 config = initialize_kernel()
-client = Anthropic(api_key=config["api_key"])
+client = create_client()
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
